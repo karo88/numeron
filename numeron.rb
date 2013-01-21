@@ -27,8 +27,8 @@ module Numeron
 
     def judge_eat(call)
       eat = 0
-      @secret.size.times do |digit|
-        eat += 1 if @secret[digit] == call[digit]
+      @secret.zip(call).each do |secret_digit, call_digit|
+        eat += 1 if secret_digit == call_digit
       end
       eat
     end
