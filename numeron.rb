@@ -34,15 +34,7 @@ module Numeron
     end
 
     def judge_bite(call)
-      bite = 0
-      @secret.size.times do |secret_digit|
-        @secret.size.times do |call_digit|
-          if(secret_digit != call_digit)
-            bite += 1 if @secret[secret_digit] == call[call_digit]
-          end
-        end
-      end
-      bite
+      (@secret & call).size - judge_eat(call)
     end
   end
 end
