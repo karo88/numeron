@@ -1,5 +1,4 @@
-require_relative './game'
-require_relative './player'
+require_relative '../lib/numeron'
 
 describe Numeron::Player do
   context "secret is [1, 2, 3]" do
