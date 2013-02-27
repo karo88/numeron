@@ -3,8 +3,8 @@ require_relative '../lib/numeron'
 describe Numeron::Player do
   context "secret is [1, 2, 3]" do
     before do
-      game = Numeron::Game.new
-      @player = Numeron::Player.new(game, [1, 2, 3])
+      @game = Numeron::Game.new
+      @player = Numeron::Player.new(@game, [1, 2, 3])
     end
     it { @player.judge_eat([1, 2, 3]).should == 3 }
     it { @player.judge_eat([4, 5, 6]).should == 0 }
@@ -22,5 +22,6 @@ describe Numeron::Player do
     it { @player.finish?([1, 2, 3]).should be_true}
     it { @player.finish?([1, 2, 5]).should be_false}
     it { @player.finish?([4, 5, 6]).should be_false}
+    it { @game.secret_length.should == 3}
   end
 end
