@@ -18,5 +18,9 @@ describe Numeron::Player do
 
     it { @player.judge([1, 2, 3]).should == [3, 0] }
     it { @player.judge([4, 3, 2]).should == [0, 2] }
+
+    it { @player.finish?([1, 2, 3]).should be_true}
+    it { @player.finish?([1, 2, 5]).should be_false}
+    it { @player.finish?([4, 5, 6]).should be_false}
   end
 end

@@ -26,5 +26,9 @@ module Numeron
     def judge_bite(call)
       (@secret & call).size - judge_eat(call)
     end
+
+    def finish?(call)
+      call == @secret
+    end
   end
 end
