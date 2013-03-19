@@ -6,10 +6,20 @@ game = Numeron::Game.new
 player = Numeron::Player.new(game, [1, 2, 3])
 
 loop do
-  puts "Call your numbers:"
-  call_str = gets.chomp
-  # TODO validate call_str: length, is number?, number duplication
-  numbers = call_str.chars.map(&:to_i)
+  begin 
+    print "Call your numbers (%d digits): " % game.secret_length
+    STDOUT.flush
+    call_str = gets.chomp
+    unless /^\d+$/ =~ call_str
+      puts "[Error] You should input digits"
+      redo
+    end
+    numbers = call_str.chars.map(&:to_i)
+    unless game.possible_secrets.include?(numbers)
+      puts "[Error] %s is not acceptable call" % numbers.join 
+      redo
+    end
+  end 
   eat, bite = player.judge(numbers)
   puts "%s: %d eat, %d bite" % [numbers.join, eat, bite]
 
