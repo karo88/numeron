@@ -7,7 +7,8 @@ player = Numeron::Player.new(game, [1, 2, 3])
 
 loop do
   begin 
-    puts "Call your numbers (%d digits): " % game.secret_length
+    print "Call your numbers (%d digits): " % game.secret_length
+    STDOUT.flush
     call_str = gets.chomp
     unless /^\d+$/ =~ call_str
       puts "[Error] You should input digits"
